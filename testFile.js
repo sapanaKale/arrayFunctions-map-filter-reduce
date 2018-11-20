@@ -15,6 +15,21 @@ const isEven = function (number) {
   return number % 2 == 0;
 }
 
+const isGreater = function (threshold) {
+  return function (number) {
+    return number > threshold;
+  }
+}
+
+const isPrime = function (number) {
+  for (let divisor=2; divisor<=Math.sqrt(number); divisor++) {
+    if (number % divisor == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
 //testing map function.
 
 const testMap = function (funcRef,source,expectedOutput) {
@@ -34,7 +49,11 @@ const testFilter = function (functionRef,source,expectedOutput) {
   assert.deepEqual(actualOutput,expectedOutput);
 }
 
+let numbersGreaterThan = isGreater(1);
 testFilter(isEven,[1],[]);
 testFilter(isEven,[1,2],[2]);
+testFilter(numbersGreaterThan,[1,2,3],[2,3]);
+testFilter(isPrime,[2],[2]);
+testFilter(isPrime,[2,3,4,5,12,19],[2,3,5,19]);
 
 console.log("all tests are passed");
