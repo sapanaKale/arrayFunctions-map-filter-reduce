@@ -6,6 +6,15 @@ const map = function (functionCallback,source) {
   return result;
 }
 
+const filter = function (functionCallback,source) {
+  let result = [];
+  for (element of source) {
+    if (functionCallback(element) == true) {
+      result.push(element);
+    }
+  }
+  return result;
+}
 
 
-module.exports = {map};
+module.exports = {map,filter};
