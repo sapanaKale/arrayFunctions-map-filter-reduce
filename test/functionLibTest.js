@@ -1,5 +1,5 @@
 const assert = require ("assert");
-const {map,filter} = require ("../src/functionLib.js");
+const {map,filter,reduce} = require ("../src/functionLib.js");
 
 //util functions - 
 
@@ -30,6 +30,10 @@ const isPrime = function (number) {
   return true;
 }
 
+const add = function (number1, number2) {
+  return number1 + number2;
+}
+
 //testing map function.
 
 describe ("map",function () {
@@ -57,5 +61,14 @@ describe ("filter",function () {
   it ("should filter the prime numbers", function () {
     assert.deepEqual(filter(isPrime,[2]),[2]);
     assert.deepEqual(filter(isPrime,[2,3,4,5,6,7]),[2,3,5,7]);
+  })
+})
+
+// test reduce function.
+
+describe ("reduce", function () {
+  it ("should provide sum of all numbers", function () {
+    assert.deepEqual(reduce(add,0,[1,2]),3);
+    assert.deepEqual(reduce(add,0,[1,2,3,4,5]),15);
   })
 })

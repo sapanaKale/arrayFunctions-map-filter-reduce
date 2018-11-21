@@ -16,5 +16,12 @@ const filter = function (functionCallback,source) {
   return result;
 }
 
+const reduce = function (reducer, initialValue, source) {
+  let result = initialValue;
+  for (element of source) {
+    result = reducer (result,element);
+  }
+  return result;
+}
 
-module.exports = {map,filter};
+module.exports = {map,filter,reduce};
