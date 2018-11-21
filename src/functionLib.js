@@ -16,7 +16,11 @@ const filter = function (functionCallback,source) {
   return result;
 }
 
-const reduce = function (reducer, initialValue, source) {
+const reduce = function (reducer, source, initialValue) {
+  if (initialValue == undefined) {
+    initialValue = source[0];
+    source = source.slice(1);
+  }
   let result = initialValue;
   for (element of source) {
     result = reducer (result,element);

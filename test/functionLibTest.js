@@ -72,13 +72,14 @@ describe ("filter",function () {
 
 describe ("reduce", function () {
   it ("should provide sum of all numbers", function () {
-    assert.deepEqual(reduce(add,0,[1,2]),3);
-    assert.deepEqual(reduce(add,0,[1,2,3,4,5]),15);
+    assert.deepEqual(reduce(add,[1,2]),3);
+    assert.deepEqual(reduce(add,[1,2,3,4],5),15);
   })
   it ("should provide greatest of given numbers", function () {
-    assert.deepEqual(reduce(extractGreater,-Infinity,[1,2]),2);
-    assert.deepEqual(reduce(extractGreater,5,[1,2,3]),5);
-    assert.deepEqual(reduce(extractGreater,-Infinity,[1,6,-5,-7,5]),6);
+    assert.deepEqual(reduce(extractGreater,[1,2],3),3);
+    assert.deepEqual(reduce(extractGreater,[1,2,3]),3);
+    assert.deepEqual(reduce(extractGreater,[1,6,-5,-7,5]),6);
   })
 })
+
 
