@@ -34,6 +34,10 @@ const add = function (number1, number2) {
   return number1 + number2;
 }
 
+const extractGreater = function (number1, number2) {
+  return Math.max(number1, number2);
+}
+
 //testing map function.
 
 describe ("map",function () {
@@ -71,4 +75,10 @@ describe ("reduce", function () {
     assert.deepEqual(reduce(add,0,[1,2]),3);
     assert.deepEqual(reduce(add,0,[1,2,3,4,5]),15);
   })
+  it ("should provide greatest of given numbers", function () {
+    assert.deepEqual(reduce(extractGreater,-Infinity,[1,2]),2);
+    assert.deepEqual(reduce(extractGreater,5,[1,2,3]),5);
+    assert.deepEqual(reduce(extractGreater,-Infinity,[1,6,-5,-7,5]),6);
+  })
 })
+
